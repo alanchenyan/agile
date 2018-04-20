@@ -1,0 +1,71 @@
+part_2:turning comments into code
+
+一、将注释转换为优美代码的方式：
+
+1、用精确名字来命名，让名字准确地表达现其含义，功能作用
+badge
+
+
+2、解决方法名过长的方式:用参数来表达方法作用
+stockitemindb
+
+3、将复杂、逻辑集中、功能自成模块的代码封装成一个类来表达
+restaurant 中的 BussinessSession 的封装
+
+
+
+二、优美的命名
+
+示例1
+描述：one inch contains 72 point.
+我的命名：int pointsInOneInch = 72;
+好的命名：final static int POINTS_PER_INCH = 72;
+
+示例2
+描述：It stores the information of a participant to be printed on his badge.
+我的命名：ParticipantBadge;
+好的命名：ParticipantOnBadge;
+
+示例3
+描述： address in English
+我的命名：enAddress;
+好的命名：englishAddr;
+我觉得用 englishAddress 可能更好
+
+
+三、好的处理方案
+
+示例1
+描述： make sure both times are valid and the start time is earlier than the end time
+原代码：
+if(fMin >0 && fMin<1440 && tMin >0 && tMin <=1400 && fMin <tMin){
+
+}
+
+我的方案：
+boolean startTimeIsEarlierThanEndTime = startMins < endMins; 
+if (timeInMinsIsValid(startMins) && 
+    timeInMinsIsValid(endMins)&& 
+    startTimeIsEarlierThanEndTime){
+ 
+ }
+
+private boolean timeInMinsIsValid(int mins) {
+		return mins > 0 && mins < 1440;
+}
+
+好的方案：
+public boolean isValid() {
+		return isMinutesWithinOneDay(minStart) && isMinutesWithinOneDay(minEnd)
+				&& minStart < minEnd;
+}
+
+private boolean isMinutesWithinOneDay(int minutes) {
+		return minutes > 0 && minutes < 1440;
+}
+
+对比： 
+1、startTimeIsEarlierThanEndTime变量名太长
+2、timeInMinsIsValid 没有 isMinutesWithinOneDay 表达的意思直观和准确
+3、方法isValid 名字简单清晰
+

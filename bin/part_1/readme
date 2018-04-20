@@ -1,0 +1,24 @@
+part_1:removing duplicate code
+
+一、去除重复代码方式
+1、将重复的代码抽取为方法
+bookrental,fooddb
+
+2、将重复代码抽取并封装为类
+organization
+
+3、抽取重复代码为类常量
+db_2
+
+4、抽取重复代码为类变量
+dbtestcase
+
+5、将重复代码提取到base类，并定义抽象方法，让子类去实现不同的逻辑
+movierental
+
+
+二、吸收
+1、在代码中抛出精确的异常信息
+throw new IllegalArgumentException("Invalid grouping!");
+代码：logparser
+
